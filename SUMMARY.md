@@ -53,3 +53,4 @@
    * [二分查找](chap1/chap1.11/chap1.11.md)
    * [函数与过程抽象](chap1/chap1.12/chap1.12.md)
    * [综合应用](chap1/chap1.13/chap1.13.md)
+* [基本算法](chap2/chap2.md)
