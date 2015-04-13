@@ -54,3 +54,4 @@
    * [函数与过程抽象](chap1/chap1.12/chap1.12.md)
    * [综合应用](chap1/chap1.13/chap1.13.md)
 * [基本算法](chap2/chap2.md)
+   * [枚举算法](chap2/chap2.1/chap2.1.md)
