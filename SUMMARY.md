@@ -56,3 +56,4 @@
 * [基本算法](chap2/chap2.md)
    * [枚举算法](chap2/chap2.1/chap2.1.md)
 	   * [7621 硬币面值组合](chap2/chap2.1/7621.md)
+	   * [7623 五户共井问题](chap2/chap2.1/7623.md)
