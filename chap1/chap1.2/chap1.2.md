@@ -136,6 +136,109 @@ int main()
 |0000...00|0         |
 这种二进制与(有符号)十进制直接的对应表示关系叫做**补码表示法**。
 
+###字符类型的二进制表示
+首先我们来认识一下**ASCII码**。ASCII码是一套字符编码，作用是将字符同整数对应起来，具体见下图：  
+![](http://computing.or.kr/wp-content/uploads/2015/04/ASCII-Table.png)  
+例如：  
+'0'~'9'对应的ASCII码是48~57  
+'A'~'Z'对应的ASCII码是65~90   
+'a'~'z'对应的ASCII码是97~122   
+char类型实际存储的是字符对应的ASCII码，**是一个整数**。  
+
+###浮点类型的二进制表示
+浮点类型的二进制表示遵循[IEEE二进制浮点数算术标准](http://zh.wikipedia.org/wiki/IEEE_754)，即IEEE754标准。  
+这个标准中详细规定了一个浮点数是如何用二进制表示的。个中细节比较复杂，这里就不介绍了。有兴趣的同学可以点击上文的链接进一步了解。  
+值得一提的是浮点类型是有误差的。我们知道实数域中有无穷多个实数，但我们用32bit的float只能表示2^32个不同的实数。在两个相邻的能表示的实数之间，有无数个实数是float无法表示的，于是就产生了误差。64bit的double可以表示更多的实数，所以精度比float高，误差比float小，但仍然不能避免误差。  
+
 变量的赋值与转换
 ---------------
+###变量的赋值
+变量，顾名思义，它里面的数值是可以变化的。给变量指定一个新的值的过程称为变量的赋值，通过赋值语句完成。
+赋值语句的形式是：  
+```变量名 = 常量;  ```  
+或者  
+```变量名 = 变量名;```
 
+其中常量也分为不同的数据类型。  
+整型：```123```， ```-123```   
+浮点类型：```1.23```, ```-1.23```  
+字符常量：单引括起来的一个一个字符 ```'a'``` ```'A'``` ```'?'``` ```' '``` ```'\n'```  
+字符串常量: 双引号括起来的一个或多个字符```"Hello World\n"```
+
+合法的赋值：
+```cpp
+int sum = 0, x;
+char ch;
+float height;
+sum = 1;
+ch = 'a';
+height = 1.71;
+x = sum;
+```
+不合法的赋值：
+```cpp
+int sum = 0, x;
+char ch;
+float height;
+1 = sum;
+ch = 'ab';
+ch = "ab";
+```
+###变量的赋值与溢出
+变量中能保存的数值是有一定范围的，例如int类型的保存的整数范围在-2^31~2^31-1之间。当我们试图把一个范围之外的数值赋值给int变量时，就会发生**溢出**。溢出发生时，变量中的数值会被"调整"到范围之内。  
+例如如下程序
+```cpp
+#include<stdio.h>
+int main()
+{
+    int vint = 2147483647;
+    printf("%d\n", vint);
+    vint = vint + 1;
+    printf("%d\n", vint);
+    return 0;
+}
+```
+输出是:
+```
+2147483647
+-2147483648
+```
+###整型与字符类型互相转换
+如下程序所示，vchar是一个字符类型变量，vint是一个整型变量。```vint = vchar;``` 实际是把vchar的ASCII码赋值给vint，```vchar=vint;``` 实际是把vchar改成ASCII码是vint的字符。
+```cpp
+#include<stdio.h>
+int main()
+{
+    int vint = 0;
+    char vchar = 'A';
+    vint = vchar;
+    printf("%d\n", vint);
+    vchar = vint + 1;
+    printf("%c\n", vchar);
+    return 0;
+}```
+输出是：
+```
+65
+B
+```
+###整型与浮点数类型互相转换
+如下程序所示，vfloat是一个浮点数类型变量，vint是一个整型变量。```vint = vfloat;```是把vfloat向0取整的值赋给vint，```vfloat=vint;```是把vint当成一个浮点数赋给vfloat。
+```cpp
+#include<stdio.h>
+int main()
+{
+    int vint = 0;
+    float vfloat = 123.3;
+    vint = vfloat;
+    printf("%d\n", vint);
+    vfloat = -123.3
+    vint = vfloat;
+    printf("%d\n", vint);
+    return 0;
+```
+输出是：
+```
+123
+-123
+```
