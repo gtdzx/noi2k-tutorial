@@ -8,6 +8,8 @@
        * [7521 空格分隔输出](chap1/chap1.1/7521.md)
        * [7523 对齐输出](chap1/chap1.1/7523.md)
    * [变量定义、赋值及转换](chap1/chap1.2/chap1.2.md)
+       * [07 打印ASCII码](chap1/chap1.2/07.md)
+       * [08 打印字符](chap1/chap1.2/08.md)
    * [算术表达式与顺序执行](chap1/chap1.3/chap1.3.md)
        * [1772 大象喝水](chap1/chap1.3/1722.md)
        * [6172 计算三角形面积](chap1/chap1.3/6172.md)
